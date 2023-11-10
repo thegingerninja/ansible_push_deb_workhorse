@@ -1,0 +1,24 @@
+---
+- hosts: all
+  become: true
+  become_method: sudo
+
+  pre_tasks:
+    - name: update, upgrade repositories (daily)
+      apt:
+        upgrade: yes
+        update_cache: yes
+        cache_valid_time: 86400
+
+  roles:
+    - role: base
+      vars:
+        sudo_user: paul
+        user_shell: /bin/fish
+        username: paul
+
+    - role: gnome
+      vars:
+        username: paul
+
+    - role: hacker

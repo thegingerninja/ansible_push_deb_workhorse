@@ -1,0 +1,17 @@
+- name: Install the commonly used packages
+  import_tasks: packages.yml
+
+- name: Setup the main user paul
+  import_tasks: sudouser.yml
+
+- name: Setup Neovim to be cool
+  become: yes
+  import_tasks: neovim.yml
+
+- name: Setup Terminator
+  become: yes
+  import_tasks: terminator.yml
+
+- name: Setup Tmux <C-a + I> to install plugins
+  become: yes
+  import_tasks: tmux.yml

@@ -1,0 +1,15 @@
+- name: Ensure Downloads directory
+  become_user: "{{ username }}"
+  file:
+    path: "/home/{{ username }}/Downloads"
+    state: directory
+
+- name: Install the full open jdk package
+  apt:
+    name: "openjdk-{{ jdk_version }} --fix-missing"
+    state: present
+
+- name: Install Maven for Java projects
+  apt:
+    name: maven
+    state: present

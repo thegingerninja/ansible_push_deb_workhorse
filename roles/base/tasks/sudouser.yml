@@ -1,0 +1,22 @@
+- name: "Create my {{ sudo_user }} sudo user"
+  user:
+    name: "{{ sudo_user }}"
+    groups: sudo
+    append: true
+    state: present
+    createhome: true
+    shell: "{{ user_shell }}"
+
+- name: "Allow {{ sudo_user }} to sudo without password"
+  copy:
+    dest: /etc/sudoers.d/ansible-sudo-user
+    content: "{{ sudo_user }} ALL=(ALL) NOPASSWD:ALL"
+    owner: root
+    group: root
+    mode: 0440
+
+- name: "Add ssh key for {{ sudo_user }}"
+  authorized_key:
+    user: "{{ sudo_user }}"
+    key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN6h84kPe4tTTpLSZBedHtEJ8weAoK6H6TtieeL/YHeb paul rocks"
+

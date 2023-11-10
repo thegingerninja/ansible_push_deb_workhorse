@@ -1,0 +1,62 @@
+- name: Install Snap core to allow Snap to work on Debian
+  snap:
+    name: core
+    state: present
+
+- name: Install neovim using snap to get latest
+  snap:
+    name: nvim
+    classic: yes
+
+- name: Ensure fonts directory
+  file:
+    path: "/home/{{ username }}/.fonts"
+    state: directory
+    owner: "{{ username }}"
+    group: "{{ username }}"
+
+- name: Install TTF Hack Nerd font
+  ansible.builtin.unarchive:
+    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Hack.zip
+    dest: "/home/{{ username }}/.fonts/"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    remote_src: yes
+
+- name: Install TTF IOSevka Nerd font
+  ansible.builtin.unarchive:
+    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Iosevka.zip
+    dest: "/home/{{ username }}/.fonts/"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    remote_src: yes
+
+- name: Install FiraCode Nerd font
+  ansible.builtin.unarchive:
+    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.zip
+    dest: "/home/{{ username }}/.fonts/"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    remote_src: yes
+
+- name: Install TTF Ubuntu Mono Nerd font
+  ansible.builtin.unarchive:
+    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/UbuntuMono.zip
+    dest: "/home/{{ username }}/.fonts/"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    remote_src: yes
+
+- name: Download packer manager from github
+  become_user: "{{ username }}"
+  ansible.builtin.git:
+    repo: https://github.com/wbthomason/packer.nvim
+    dest: "/home/{{ username }}/.local/share/nvim/site/pack/packer/start/packer.nvim"
+    depth: 1
+
+- name: Get my nvim config files from github
+  become_user: "{{ username }}"
+  ansible.builtin.git:
+    repo: https://github.com/thegingerninja/nvim-conf
+    dest: "/home/{{ username }}/.config/nvim"
+

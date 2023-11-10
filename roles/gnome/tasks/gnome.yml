@@ -1,0 +1,29 @@
+- name: Install Xorg Server
+  apt:
+    name: xorg
+    state: present
+
+- name: Install libvirt spice helper
+  apt:
+    name: spice-vdagent
+    state: present
+
+- name: Install Gnome Desktop
+  apt:
+    name: gnome
+    state: present
+
+- name: Install Gnome Tweaks
+  apt:
+    name: gnome-tweaks
+    state: present
+
+- name: Enable the Gnome Desktop manager service
+  ansible.builtin.service:
+    name: gdm
+    state: started
+
+- name: Enable the Spice service
+  ansible.builtin.service:
+    name: spice-vdagent
+    state: started

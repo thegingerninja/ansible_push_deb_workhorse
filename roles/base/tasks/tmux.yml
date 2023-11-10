@@ -1,0 +1,21 @@
+- name: Install Tmux
+  apt:
+    name: tmux
+    state: present
+
+- name: Install clipboard tool xsel
+  apt:
+    name: xsel
+    state: present
+
+- name: Load Tmux config from git repo
+  become_user: "{{ username }}"
+  ansible.builtin.git:
+    repo: https://github.com/thegingerninja/tmux_conf
+    dest: "/home/{{ username }}/.config/tmux"
+
+- name: Install Tmux Plugin Manager
+  become_user: "{{ username }}"
+  ansible.builtin.git:
+    repo: https://github.com/tmux-plugins/tpm.git
+    dest: "/home/{{ username }}/.config/tmux/plugins/tpm"

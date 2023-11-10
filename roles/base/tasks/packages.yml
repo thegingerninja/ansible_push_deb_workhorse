@@ -1,0 +1,64 @@
+- name: Install useful packages
+  apt:
+    name: git
+    state: present
+
+- name: Install acl to all /tmp writing
+  apt:
+    name: acl
+    state: present
+
+- name: Build Essentials for compilers
+  apt:
+    name: build-essential
+    state: present
+
+- name: Install tree
+  apt:
+    name: tree
+    state: present
+
+- name: Install htop 
+  apt:
+    name: htop
+    state: present
+
+- name: Install cmatrix 
+  apt:
+    name: cmatrix
+    state: present
+
+- name: Install ncdu 
+  apt:
+    name: ncdu
+    state: present
+
+- name: Install fish 
+  apt:
+    name: fish
+    state: present
+
+- name: Install Unzip
+  apt:
+    name: unzip
+    state: present
+
+- name: Install Snapcraft for snaps
+  apt:
+    name: snapd
+    state: present
+
+- name: Install Snap core to allow Snap to work on Debian
+  snap:
+    name: core
+    state: present
+
+- name: Install FlameShot
+  apt:
+    name: flameshot
+    state: present
+
+- name: Install NeoFetch
+  apt:
+    name: neofetch
+    state: present

@@ -1,0 +1,10 @@
+- name: Install Terminator
+  apt:
+    name: terminator
+    state: present
+
+- name: Load Terminator config from git repo
+  become_user: "{{ username }}"
+  ansible.builtin.git:
+    repo: https://github.com/thegingerninja/terminator_conf
+    dest: "/home/{{ username }}/.config/terminator"
