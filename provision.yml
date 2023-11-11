@@ -17,6 +17,7 @@
         user_shell: /bin/fish
         username: paul
 
+    # - role: sway
     - role: gnome
       vars:
         username: paul

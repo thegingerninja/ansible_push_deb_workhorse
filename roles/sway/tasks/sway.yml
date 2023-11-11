@@ -1,0 +1,45 @@
+- name: Install sway
+  apt:
+    name: sway
+    state: present
+
+- name: Install swaybg
+  apt:
+    name: swaybg
+    state: present
+
+- name: Install Awesome fonts
+  apt:
+    name: fonts-font-awesome
+    state: present
+
+- name: Install wofi
+  apt:
+    name: wofi
+    state: present
+
+- name: Install waybar
+  apt:
+    name: waybar
+    state: present
+
+- name: Install swayidle
+  apt:
+    name: swayidle
+    state: present
+
+- name: Install swaylock
+  apt:
+    name: swaylock
+    state: present
+
+- name: Install swayimg
+  apt:
+    name: swayimg
+    state: present
+
+- name: Get my sway config file from github
+  become_user: "{{ username }}"
+  ansible.builtin.git:
+    repo: https://github.com/thegingerninja/sway_conf
+    dest: "/home/{{ username }}/.config/sway"
