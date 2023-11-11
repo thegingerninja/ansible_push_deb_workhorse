@@ -1,0 +1,39 @@
+- name: Install i3
+  apt:
+    name: i3
+    state: present
+
+- name: Install Xorg display manager
+  apt:
+    name: xorg
+    state: present
+
+- name: Install lightdm for login
+  apt:
+    name: lightdm
+    state: present
+
+- name: Install Slick Greeter
+  apt:
+    name: slick-greeter
+    state: present
+
+- name: Install lightdm settings
+  apt:
+    name: lightdm-settings
+    state: present
+
+- name: Install lxappearance
+  apt:
+    name: lxappearance
+    state: present
+
+- name: Install nitrogen wallpaper manager
+  apt:
+    name: nitrogen
+    state: present
+
+- name: Enable LightDm for better login experience
+  ansible.builtin.service:
+    name: lightdm
+    enabled: yes

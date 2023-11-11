@@ -18,7 +18,8 @@
         username: paul
 
     # - role: sway
-    - role: gnome
+    # - role: gnome
+    - role: i3wm
       vars:
         username: paul
 
